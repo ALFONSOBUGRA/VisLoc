@@ -1,0 +1,54 @@
+# Configuration for the Visual Localization Pipeline
+
+# SuperPoint detector configuration (for original VisLoc pipeline)
+superpoint:
+  device: "cuda"
+  nms_radius: 4
+  keypoint_threshold: 0.01
+  max_keypoints: -1
+
+# SuperGlue matcher configuration (for original VisLoc pipeline)
+superglue:
+  device: "cuda"
+  weights: "outdoor"
+  sinkhorn_iterations: 20
+  match_threshold: 0.02  # Note: This is for SuperGlue, not OmniGlue
+
+# OmniGlue configuration (for OmniGlue pipeline)
+omniglue:
+  og_export_path: "models/og_export"          # Path to OmniGlue TF SavedModel dir
+  sp_export_path: "models/sp_v6"              # Path to SuperPoint TF SavedModel dir (for OmniGlue)
+  dino_export_path: "models/dinov2_vitb14_pretrain.pth" # Path to DINOv2 PyTorch weights
+  match_threshold: 0.02                       # OmniGlue confidence threshold
+
+# Map reader configuration
+map_reader:
+  db_path: "data/map/"
+  resize_size: [800] # Resize applies to both pipelines if QueryProcessor uses it
+# Drone image streamer configuration
+drone_streamer:
+  image_folder: "data/query/"
+  has_gt: true
+
+# Camera model configuration
+camera_model:
+  focal_length: 0.0045  # 4.5mm
+  resolution_height: 4056
+  resolution_width: 3040
+  hfov_deg: 82.9
+
+# Query processor configuration
+query_processor:
+  processings: ["resize"] # Preprocessing steps applied to drone image before BOTH pipelines
+  satellite_resolution: null
+  size: [800] # Size to resize query images for BOTH pipelines
+
+# Pipeline configuration (general, might need splitting if behavior differs)
+pipeline:
+  output_path: "data/output" # Base output directory
+
+# Logging configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  datefmt: "%H:%M:%S"

@@ -1,0 +1,9 @@
+Matcher: OmniGlue
+Drone Image: drone_image_1
+Matched Map Image: sat_map_00
+Raw Matches (Pre-RANSAC): 307
+Filtered Matches (Post-RANSAC): 51
+Outliers: 256
+Predicted Coordinates: GpsCoordinate(lat=60.40320340201729, long=22.46223191)
+Ground Truth Coordinates: GpsCoordinate(lat=60.403241666666666, long=22.46213333333333)
+Distance (m): 6.89

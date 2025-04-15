@@ -1,0 +1,9 @@
+Matcher: SuperGlue
+Drone Image: drone_image_1
+Matched Map Image: sat_map_00
+Raw Matches (Pre-RANSAC): 236
+Filtered Matches (Post-RANSAC): 46
+Outliers: 190
+Predicted Coordinates: GpsCoordinate(lat=60.40316759798271, long=22.4621278925)
+Ground Truth Coordinates: GpsCoordinate(lat=60.403241666666666, long=22.46213333333333)
+Distance (m): 8.24
